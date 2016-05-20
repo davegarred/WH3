@@ -1,7 +1,7 @@
 package org.garred.wh3.service;
 
 import org.garred.wh3.model.HashEvent;
-import org.garred.wh3.wh3.dummy.DummyContent;
+import org.garred.wh3.wh3.dummy.DummyEvents;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ public class DataHolder {
     public static void load() {
         events = new ArrayList<>();
         eventMap = new HashMap<>();
-        for (DummyContent.DummyItem item : DummyContent.ITEMS) {
+        for (DummyEvents.DummyItem item : DummyEvents.ITEMS) {
             HashEvent hashEvent = buildEvent(item);
             events.add(hashEvent);
             eventMap.put(item.id, hashEvent);
@@ -38,7 +38,7 @@ public class DataHolder {
         return eventMap.get(eventId);
     }
 
-    private static HashEvent buildEvent(DummyContent.DummyItem item) {
+    private static HashEvent buildEvent(DummyEvents.DummyItem item) {
         return new HashEvent.Builder()
                 .withId(item.id)
                 .withEventName(item.content)

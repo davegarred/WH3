@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import org.garred.wh3.model.HashEvent;
 import org.garred.wh3.service.DataHolder;
-import org.garred.wh3.wh3.dummy.DummyContent;
 
 public class EventDetailFragment extends Fragment {
 

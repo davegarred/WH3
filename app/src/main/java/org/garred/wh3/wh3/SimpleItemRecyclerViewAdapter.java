@@ -11,11 +11,8 @@ import android.widget.TextView;
 
 import org.garred.wh3.model.HashEvent;
 import org.garred.wh3.service.DataHolder;
-import org.garred.wh3.wh3.dummy.DummyContent;
 
-import java.util.List;
-
-public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
+public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<HashEventViewHolder> {
 
     private final EventListActivity eventListActivity;
 //    private final List<DummyContent.DummyItem> values;
@@ -25,24 +22,24 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleIt
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public HashEventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.event_list_content, parent, false);
-        return new ViewHolder(view);
+        return new HashEventViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = DataHolder.getEvents().get(position);
-        holder.mIdView.setText(holder.mItem.getId());
-        holder.mContentView.setText(holder.mItem.getEventName());
+    public void onBindViewHolder(final HashEventViewHolder holder, int position) {
+        final HashEvent hashEvent = DataHolder.getEvents().get(position);
+        holder.mIdView.setText(hashEvent.getId());
+        holder.mContentView.setText(hashEvent.getEventName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (eventListActivity.isTwoPane()) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(EventDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
+                    arguments.putString(EventDetailFragment.ARG_ITEM_ID, hashEvent.getId());
                     EventDetailFragment fragment = new EventDetailFragment();
                     fragment.setArguments(arguments);
                     eventListActivity.getSupportFragmentManager().beginTransaction()
@@ -51,7 +48,7 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleIt
                 } else {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, EventDetailActivity.class);
-                    intent.putExtra(EventDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
+                    intent.putExtra(EventDetailFragment.ARG_ITEM_ID, hashEvent.getId());
 
                     context.startActivity(intent);
                 }
@@ -64,22 +61,4 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleIt
         return DataHolder.getEvents().size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public HashEvent mItem;
-
-        public ViewHolder(View view) {
-            super(view);
-            mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
-    }
 }

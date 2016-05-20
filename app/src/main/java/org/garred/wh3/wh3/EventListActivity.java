@@ -9,7 +9,6 @@ import android.view.View;
 
 
 import org.garred.wh3.service.DataHolder;
-import org.garred.wh3.wh3.dummy.DummyContent;
 
 /**
  * An activity representing a list of Events. This activity
