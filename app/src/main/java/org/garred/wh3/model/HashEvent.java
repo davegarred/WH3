@@ -189,12 +189,14 @@ public class HashEvent implements Comparable<Object>,Serializable {
 			return new HashEvent(this);
 		}
 		
-		public void withId(String i) {
+		public Builder withId(String i) {
 			this.id = i;
+			return this;
 		}
-		public void withDate(DateTime datetime) {
+		public Builder withDate(DateTime datetime) {
 			this.time = datetime.toLocalTime();
 			this.date = datetime;
+			return this;
 		}
 		public LocalTime getTime() {
 			return time;

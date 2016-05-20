@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.garred.wh3.model.HashEvent;
+import org.garred.wh3.service.DataHolder;
 import org.garred.wh3.wh3.dummy.DummyContent;
 
 import java.util.List;
@@ -16,11 +18,10 @@ import java.util.List;
 public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
     private final EventListActivity eventListActivity;
-    private final List<DummyContent.DummyItem> values;
+//    private final List<DummyContent.DummyItem> values;
 
-    public SimpleItemRecyclerViewAdapter(EventListActivity eventListActivity, List<DummyContent.DummyItem> items) {
+    public SimpleItemRecyclerViewAdapter(EventListActivity eventListActivity) {
         this.eventListActivity = eventListActivity;
-        this.values = items;
     }
 
     @Override
@@ -32,16 +33,16 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleIt
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = values.get(position);
-        holder.mIdView.setText(values.get(position).id);
-        holder.mContentView.setText(values.get(position).content);
+        holder.mItem = DataHolder.getEvents().get(position);
+        holder.mIdView.setText(holder.mItem.getId());
+        holder.mContentView.setText(holder.mItem.getEventName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (eventListActivity.isTwoPane()) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(EventDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                    arguments.putString(EventDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
                     EventDetailFragment fragment = new EventDetailFragment();
                     fragment.setArguments(arguments);
                     eventListActivity.getSupportFragmentManager().beginTransaction()
@@ -50,7 +51,7 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleIt
                 } else {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, EventDetailActivity.class);
-                    intent.putExtra(EventDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                    intent.putExtra(EventDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
 
                     context.startActivity(intent);
                 }
@@ -60,14 +61,14 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleIt
 
     @Override
     public int getItemCount() {
-        return values.size();
+        return DataHolder.getEvents().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyContent.DummyItem mItem;
+        public HashEvent mItem;
 
         public ViewHolder(View view) {
             super(view);
