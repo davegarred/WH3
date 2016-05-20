@@ -15,7 +15,6 @@ import org.garred.wh3.service.DataHolder;
 public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<HashEventViewHolder> {
 
     private final EventListActivity eventListActivity;
-//    private final List<DummyContent.DummyItem> values;
 
     public SimpleItemRecyclerViewAdapter(EventListActivity eventListActivity) {
         this.eventListActivity = eventListActivity;
@@ -31,29 +30,36 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<HashEven
     @Override
     public void onBindViewHolder(final HashEventViewHolder holder, int position) {
         final HashEvent hashEvent = DataHolder.getEvents().get(position);
-        holder.mIdView.setText(hashEvent.getId());
+        holder.mIdView.setText(hashEvent.getDateStringShort());
         holder.mContentView.setText(hashEvent.getEventName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (eventListActivity.isTwoPane()) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(EventDetailFragment.ARG_ITEM_ID, hashEvent.getId());
-                    EventDetailFragment fragment = new EventDetailFragment();
-                    fragment.setArguments(arguments);
-                    eventListActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.event_detail_container, fragment)
-                            .commit();
+                    bindViewToFragment(hashEvent);
                 } else {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, EventDetailActivity.class);
-                    intent.putExtra(EventDetailFragment.ARG_ITEM_ID, hashEvent.getId());
-
-                    context.startActivity(intent);
+                    bindViewAsActivity(v, hashEvent);
                 }
             }
         });
+    }
+
+    private void bindViewToFragment(HashEvent hashEvent) {
+        Bundle arguments = new Bundle();
+        arguments.putString(EventDetailFragment.ARG_ITEM_ID, hashEvent.getId());
+        EventDetailFragment fragment = new EventDetailFragment();
+        fragment.setArguments(arguments);
+        eventListActivity.getSupportFragmentManager().beginTransaction()
+                .replace(R.id.event_detail_container, fragment)
+                .commit();
+    }
+    private void bindViewAsActivity(View v, HashEvent hashEvent) {
+        Context context = v.getContext();
+        Intent intent = new Intent(context, EventDetailActivity.class);
+        intent.putExtra(EventDetailFragment.ARG_ITEM_ID, hashEvent.getId());
+
+        context.startActivity(intent);
     }
 
     @Override
