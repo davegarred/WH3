@@ -189,39 +189,47 @@ public class HashEvent implements Comparable<Object>,Serializable {
 			return new HashEvent(this);
 		}
 		
-		public void setId(String i) {
+		public void withId(String i) {
 			this.id = i;
 		}
-		public void setDate(DateTime datetime) {
+		public void withDate(DateTime datetime) {
 			this.time = datetime.toLocalTime();
 			this.date = datetime;
 		}
 		public LocalTime getTime() {
 			return time;
 		}
-		public void setTime(LocalTime time) {
+		public Builder setTime(LocalTime time) {
 			this.time = time;
+			return this;
 		}
-		public void setType(Kennel type) {
+		public Builder withType(Kennel type) {
 			this.type = type;
+			return this;
 		}
-		public void setEventNumber(int eventNumber) {
+		public Builder withEventNumber(int eventNumber) {
 			this.eventNumber = eventNumber;
+			return this;
 		}
-		public void setHare(String hare) {
+		public Builder withHare(String hare) {
 			this.hare = hare;
+			return this;
 		}
-		public void setEventName(String eventName) {
+		public Builder withEventName(String eventName) {
 			this.eventName = eventName;
+			return this;
 		}
-		public void setDescription(String description) {
+		public Builder withDescription(String description) {
 			this.description = description;
+			return this;
 		}
-		public void setAddress(String address) {
+		public Builder withAddress(String address) {
 			this.address = address;
+			return this;
 		}
-		public void setMapLinkBuild(URL mapLink) {
+		public Builder withMapLinkBuild(URL mapLink) {
 			this.mapLink = mapLink;
+			return this;
 		}
 
 
@@ -229,21 +237,21 @@ public class HashEvent implements Comparable<Object>,Serializable {
 
 	public static HashEvent fromDto(HashEventDto dto) {
 		Builder builder = new Builder();
-		builder.setId(dto.id);
+		builder.withId(dto.id);
 		DateTime date = null;
 		if(dto.date.length == 0) {
 			date = new DateTime(dto.date[0],dto.date[1],dto.date[2],0,0);
 		} else {
 			date = new DateTime(dto.date[0],dto.date[1], dto.date[2], dto.date[3], dto.date[4]);
 		}
-		builder.setDate(new DateTime(date));
-		builder.setType(Kennel.fromCode(dto.kennel));
-		builder.setEventName(dto.eventName);
-		builder.setEventNumber(dto.eventNumber);
-		builder.setHare(dto.hare);
-		builder.setDescription(dto.description);
-		builder.setAddress(dto.address);
-		builder.setMapLinkBuild(dto.mapLink);
+		builder.withDate(new DateTime(date));
+		builder.withType(Kennel.fromCode(dto.kennel));
+		builder.withEventName(dto.eventName);
+		builder.withEventNumber(dto.eventNumber);
+		builder.withHare(dto.hare);
+		builder.withDescription(dto.description);
+		builder.withAddress(dto.address);
+		builder.withMapLinkBuild(dto.mapLink);
 		return builder.build();
 	}
 }

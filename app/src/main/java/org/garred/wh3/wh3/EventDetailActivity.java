@@ -1,10 +1,12 @@
 package org.garred.wh3.wh3;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
@@ -61,6 +63,16 @@ public class EventDetailActivity extends AppCompatActivity {
                     .add(R.id.event_detail_container, fragment)
                     .commit();
         }
+    }
+
+    @Override
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        return super.onCreateView(name, context, attrs);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     @Override
