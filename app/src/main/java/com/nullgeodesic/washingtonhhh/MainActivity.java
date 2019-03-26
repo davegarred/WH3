@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.nullgeodesic.washingtonhhh.service.CommunicationController;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -26,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        CommunicationController.kickoff(this);
+
     }
 
     @Override
