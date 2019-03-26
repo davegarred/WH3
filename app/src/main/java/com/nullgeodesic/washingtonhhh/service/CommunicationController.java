@@ -1,6 +1,5 @@
 package com.nullgeodesic.washingtonhhh.service;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
@@ -8,17 +7,18 @@ import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.nullgeodesic.washingtonhhh.EventListActivity;
 import com.nullgeodesic.washingtonhhh.MainActivity;
-import com.nullgeodesic.washingtonhhh.SplashActivity;
+import com.nullgeodesic.washingtonhhh.domain.archive.HashEvent;
 import com.nullgeodesic.washingtonhhh.dto.CalendarDto;
-
-import org.json.JSONObject;
+import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.provider.Settings.Secure.ANDROID_ID;
 import static android.provider.Settings.Secure.getString;
@@ -54,8 +54,14 @@ public class CommunicationController {
                     @Override
                     public void onResponse(String response) {
                         CalendarDto cal = new Gson().fromJson(response, CalendarDto.class);
+                        final List<HashEvent> hashEvents = new ArrayList<>();
+                        for(HashEventDto dto : cal.events) {
+                            hashEvents.add(HashEvent.fromDto(dto));
+                        }
+                        ContentHolder.setItems(hashEvents);
                         Log.v(TAG, cal.toString());
-                        final Intent intent = new Intent(activity, SplashActivity.class);
+//                        final Intent intent = new Intent(activity, SplashActivity.class);
+                        final Intent intent = new Intent(activity, EventListActivity.class);
                         activity.startActivity(intent);
                     }
                 }, new Response.ErrorListener() {
