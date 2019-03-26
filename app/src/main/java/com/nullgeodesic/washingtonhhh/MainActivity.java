@@ -30,15 +30,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        CommunicationController.kickoff(this);
-
-    }
-
-    public void warn(String s) {
-        new AlertDialog.Builder(this)
-                .setTitle("Comm Error")
-                .setMessage(s)
-                .show();
     }
 
     @Override

@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.nullgeodesic.washingtonhhh.EventListActivity;
 import com.nullgeodesic.washingtonhhh.MainActivity;
+import com.nullgeodesic.washingtonhhh.SplashActivity;
 import com.nullgeodesic.washingtonhhh.domain.archive.HashEvent;
 import com.nullgeodesic.washingtonhhh.dto.CalendarDto;
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
@@ -27,7 +28,7 @@ public class CommunicationController {
 
     private static final String TAG = CommunicationController.class.getSimpleName();
 
-    public static void kickoff(final MainActivity activity) {
+    public static void kickoff(final SplashActivity activity) {
         final String androidId = getString(activity.getContentResolver(), ANDROID_ID);
         int versionCode = 0;
         try {
@@ -46,7 +47,7 @@ public class CommunicationController {
     }
 
 
-    private static Request retrieve(String target, final MainActivity activity) throws IOException {
+    private static Request retrieve(String target, final SplashActivity activity) throws IOException {
 //        target = "http://nullgedesic.com/seahhh";
         return new StringRequest
                 (Request.Method.GET, target, new Response.Listener<String>() {
