@@ -54,7 +54,6 @@ public class EventListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.v(TAG, ContentHolder.ITEMS.get(position).getEventName());
                 final Intent intent = new Intent(currentActivity, EventDetailActivity.class);
                 intent.putExtra("position", position);
                 currentActivity.startActivity(intent);

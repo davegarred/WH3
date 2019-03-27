@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">WashingtonHHH</string>
+    <string name="app_name">Washington HHH</string>
     <string name="action_settings">Settings</string>
 
-    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_splash">Washing HHH</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_event_list">EventListActivity</string>
+    <string name="title_activity_event_list">Upcoming events</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -95,5 +95,5 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="title_activity_event_detail">EventDetailActivity</string>
+    <string name="title_activity_event_detail">Details</string>
 </resources>
