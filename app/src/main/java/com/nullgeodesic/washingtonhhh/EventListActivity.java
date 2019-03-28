@@ -14,9 +14,7 @@ import android.widget.ListView;
 
 import com.nullgeodesic.washingtonhhh.domain.archive.HashEvent;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.nullgeodesic.washingtonhhh.service.EventListAdapter;
 
 public class EventListActivity extends AppCompatActivity {
 
@@ -41,14 +39,9 @@ public class EventListActivity extends AppCompatActivity {
         });
 
         final ListView listView = (ListView) findViewById(R.id.content_event_list_view);
-        final List<String> eventList = new ArrayList<>();
-        for (final HashEvent item : ContentHolder.ITEMS) {
-            eventList.add(item.getEventName());
-        }
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1, eventList);
+        final ArrayAdapter<HashEvent> arrayAdapter = new EventListAdapter(this, R.layout.content_event_list_item, R.id.list_item_name_textview, ContentHolder.ITEMS);
         listView.setAdapter(arrayAdapter);
-        
+
         final Activity currentActivity = this;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

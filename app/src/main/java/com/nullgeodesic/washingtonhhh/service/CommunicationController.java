@@ -11,7 +11,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.nullgeodesic.washingtonhhh.EventListActivity;
-import com.nullgeodesic.washingtonhhh.MainActivity;
 import com.nullgeodesic.washingtonhhh.SplashActivity;
 import com.nullgeodesic.washingtonhhh.domain.archive.HashEvent;
 import com.nullgeodesic.washingtonhhh.dto.CalendarDto;
