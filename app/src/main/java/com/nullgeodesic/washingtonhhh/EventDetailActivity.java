@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
-import com.nullgeodesic.washingtonhhh.domain.archive.HashEvent;
+import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
+
+import java.util.regex.Pattern;
 
 public class EventDetailActivity extends AppCompatActivity {
 
@@ -27,8 +30,8 @@ public class EventDetailActivity extends AppCompatActivity {
         final TextView eventDescription = (TextView) findViewById(R.id.content_event_detail_description);
 
         int position = getIntent().getIntExtra("position", 0);
-        final HashEvent hashEvent = ContentHolder.ITEMS.get(position);
-        final String mapLink = hashEvent.getMapLink();
+        final HashEventDto hashEvent = ContentHolder.ITEMS.get(position);
+        final String mapLink = hashEvent.mapLink;
         if (mapLink == null || mapLink == "") {
             fab.hide();
         } else {
@@ -41,7 +44,10 @@ public class EventDetailActivity extends AppCompatActivity {
                 }
             });
         }
-        toolbar.setTitle(hashEvent.getEventName());
-        eventDescription.setText(hashEvent.getDescription());
+        toolbar.setTitle(hashEvent.eventName);
+
+        final boolean hasHtml = Pattern.compile("<[^>]*>").matcher(hashEvent.description).find();
+        final CharSequence description = hasHtml ? Html.fromHtml(hashEvent.description) : hashEvent.description;
+        eventDescription.setText(description);
     }
 }

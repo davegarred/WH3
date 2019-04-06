@@ -1,6 +1,6 @@
 package com.nullgeodesic.washingtonhhh.service;
 
-import com.nullgeodesic.washingtonhhh.domain.archive.HashEvent;
+import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,19 +11,19 @@ public class ContentHolder {
 
     public static final String EVENT_DETAIL_ID = "event_id";
 
-    public static List<HashEvent> ITEMS = new ArrayList<>();
-    public static Map<String, HashEvent> ITEM_MAP = new HashMap<>();
+    public static List<HashEventDto> ITEMS = new ArrayList<>();
+    public static Map<String, HashEventDto> ITEM_MAP = new HashMap<>();
     private static String message = "";
 
-    private static void addItem(HashEvent item) {
+    private static void addItem(HashEventDto item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.getId().toString(), item);
+        ITEM_MAP.put(item.googleId, item);
     }
 
-    public static void setItems(List<HashEvent> events) {
+    public static void setItems(final List<HashEventDto> events) {
         ITEMS.clear();
         ITEM_MAP.clear();
-        for(HashEvent event : events) {
+        for(HashEventDto event : events) {
             addItem(event);
         }
     }

@@ -8,16 +8,16 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.nullgeodesic.washingtonhhh.R;
-import com.nullgeodesic.washingtonhhh.domain.archive.HashEvent;
+import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 
 import java.util.List;
 
-public class EventListAdapter extends ArrayAdapter<HashEvent> {
+public class EventListAdapter extends ArrayAdapter<HashEventDto> {
 
     private final Context context;
-    private final List<HashEvent> events;
+    private final List<HashEventDto> events;
 
-    public EventListAdapter(final Context context, final int resource, int textViewResourceId, final List<HashEvent> events) {
+    public EventListAdapter(final Context context, final int resource, int textViewResourceId, final List<HashEventDto> events) {
         super(context, resource, textViewResourceId, events);
         this.context = context;
         this.events = events;
@@ -25,11 +25,20 @@ public class EventListAdapter extends ArrayAdapter<HashEvent> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final HashEvent event = this.events.get(position);
+        final HashEventDto event = this.events.get(position);
+        final View view = baseView(parent, event);
+        textView(view, R.id.list_item_date_textview, event.dateForListing());
+        textView(view, R.id.list_item_name_textview, event.eventName);
+        return view;
+    }
+
+    private View baseView(ViewGroup parent, final HashEventDto event) {
         final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View view = inflater.inflate(R.layout.content_event_list_item, parent, false);
-        textView(view, R.id.list_item_date_textview, event.getDateStringShort());
-        textView(view, R.id.list_item_name_textview, event.getEventName());
+        if(event.kennel.id.equals("UNKNOWN")) {
+            return inflater.inflate(R.layout.content_event_list_item_no_kennel, parent, false);
+        }
+        final View view = inflater.inflate(R.layout.content_event_list_item_kennel, parent, false);
+        textView(view, R.id.list_item_kennel_textview, event.kennel.name);
         return view;
     }
 

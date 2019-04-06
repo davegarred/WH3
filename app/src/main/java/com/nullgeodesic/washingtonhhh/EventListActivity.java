@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.nullgeodesic.washingtonhhh.domain.archive.HashEvent;
+import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
 import com.nullgeodesic.washingtonhhh.service.EventListAdapter;
 
@@ -39,7 +39,7 @@ public class EventListActivity extends AppCompatActivity {
         });
 
         final ListView listView = (ListView) findViewById(R.id.content_event_list_view);
-        final ArrayAdapter<HashEvent> arrayAdapter = new EventListAdapter(this, R.layout.content_event_list_item, R.id.list_item_name_textview, ContentHolder.ITEMS);
+        final ArrayAdapter<HashEventDto> arrayAdapter = new EventListAdapter(this, R.layout.content_event_list_item_no_kennel, R.id.list_item_name_textview, ContentHolder.ITEMS);
         listView.setAdapter(arrayAdapter);
 
         final Activity currentActivity = this;
