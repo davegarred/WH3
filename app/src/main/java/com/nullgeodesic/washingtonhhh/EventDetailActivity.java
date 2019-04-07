@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
@@ -21,18 +22,18 @@ public class EventDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_event_detail_toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.activity_event_detail_floating_action_button);
-
-
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.activity_event_detail_toolbar);
+        final ImageView kennelLogo = (ImageView) findViewById(R.id.activity_event_detail_kennel_logo);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.activity_event_detail_floating_action_button);
         final TextView eventDescription = (TextView) findViewById(R.id.content_event_detail_description);
+
+
+        setSupportActionBar(toolbar);
 
         int position = getIntent().getIntExtra("position", 0);
         final HashEventDto hashEvent = ContentHolder.ITEMS.get(position);
         final String mapLink = hashEvent.mapLink;
-        if (mapLink == null || mapLink == "") {
+        if (mapLink == null) {
             fab.hide();
         } else {
             fab.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,13 @@ public class EventDetailActivity extends AppCompatActivity {
                 }
             });
         }
+        final int kennelDrawableId = hashEvent.kennel.drawableId();
+        if(kennelDrawableId == 0) {
+            kennelLogo.setVisibility(View.INVISIBLE);
+        } else {
+            kennelLogo.setImageResource(kennelDrawableId);
+        }
+
         toolbar.setTitle(hashEvent.eventName);
 
         final boolean hasHtml = Pattern.compile("<[^>]*>").matcher(hashEvent.description).find();

@@ -31,6 +31,14 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 app:title="@string/title_activity_event_detail" />
 
+            <ImageView
+                android:id="@+id/activity_event_detail_kennel_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="right"
+                android:gravity="center_horizontal"
+                app:srcCompat="@drawable/logo_puget" />
+
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
