@@ -1,0 +1,57 @@
+### Badges
+
+- 3rd generation, etc.
+- SHIGGYLICIOUS
+- Pavement Pounder
+- WALKER_FRIENDLY
+
+### Kennel details
+
+- Seattle
+  - hareline: $5 Fuck Up  fivedollarfu@gmail.com
+  - badges: WALKER_FRIENDLY
+  - first hash: 1983-07-11
+  - founders: Molly Malone
+  - lineage: Puget Sound
+- Puget Sound H3
+  - hareline:
+  - badges:
+  - founders: Bill "Groper" Goelzer, John "Wrong Way" Moe, John "Cripple" Witsoe
+  - lineage: Tehran H3
+- Puget Sound No Balls H3
+  - hareline: Puget Sound
+  - badges: WALKER_FRIENDLY
+  - first hash: 1989-03-31
+  - founders: Linda "Down Down" Sholand, Linda "Hopalong" Youngs, Sherry "Captain Crash" Picatti, Patti "Hardcore" Jensen
+  - lineage: Puget Sound H3
+- Tacoma H3
+  - hareline:
+  - first hash: 1987-03-07
+  - founders: 	Lewis "Bunny Phu Phu" Giles
+  - lineage: Samurai H3
+- Holy Shit! WTF? H3
+  - hareline:
+  - first hash: 2011-08-07
+  - founders:
+  - lineage:
+- Giggity H3
+  - hareline:
+  - first hash: 2015-12-02
+  - founders: "Jack Off More Men", "Low TempHo", "Heiney Girl", "Raspberry Beret", "Bubba Gump", "Bone A Friend"
+  - lineage:
+- South Sound H3
+  - hareline:
+  - first hash:
+  - founders: "Moped", "Polepoundher", "Dirty Motherfucker", "Fist Deep"
+  - lineage: 	Osan Bulgogi H3
+- Rain City H3
+  - hareline:
+  -badges: SHIGGYLICIOUS
+  - first hash: 1995-12-31
+  - founders: Scott "Bone Blower" Gode
+  - lineage:	Bonn H3
+- Hank Hash
+  - hareline:
+  - first hash:
+  - founders:
+  - lineage:
