@@ -8,50 +8,75 @@
 ### Kennel details
 
 - Seattle
+  - id: SEATTLE
   - hareline: $5 Fuck Up  fivedollarfu@gmail.com
   - badges: WALKER_FRIENDLY
   - first hash: 1983-07-11
   - founders: Molly Malone
   - lineage: Puget Sound
+- SeaMon H3
+  - id: SEAMON
+  - hareline: SeaMon Champs  SeaMonH3@googlegroups.com
+  - badges: PAVEMENT_POUNDER
+  - first hash: 2015-03-23
+  - founders: Just Can't Get It Up
+  - lineage: Puget Sound
 - Puget Sound H3
-  - hareline:
+  - id: PUGET_SOUND
+  - hareline: Dick in a Box  diab@wh3.org
   - badges:
   - founders: Bill "Groper" Goelzer, John "Wrong Way" Moe, John "Cripple" Witsoe
   - lineage: Tehran H3
 - Puget Sound No Balls H3
+  - id: NO_BALLS
+  - hareraiser: Panty Ho rebabeauty@gmail.com
   - hareline: Puget Sound
   - badges: WALKER_FRIENDLY
   - first hash: 1989-03-31
   - founders: Linda "Down Down" Sholand, Linda "Hopalong" Youngs, Sherry "Captain Crash" Picatti, Patti "Hardcore" Jensen
   - lineage: Puget Sound H3
 - Tacoma H3
-  - hareline:
+  - id: TACOMA
+  - hareline: Tight Sticky Bush  rondal@myuw.net
   - first hash: 1987-03-07
   - founders: 	Lewis "Bunny Phu Phu" Giles
   - lineage: Samurai H3
 - Holy Shit! WTF? H3
+  - id: HSWTF
   - hareline:
   - first hash: 2011-08-07
-  - founders:
+  - founders: STP, Olde E, Ground Control, HI-V, Captn Jack, Bushfucker
   - lineage:
 - Giggity H3
+-   id: GIGGITY
   - hareline:
   - first hash: 2015-12-02
   - founders: "Jack Off More Men", "Low TempHo", "Heiney Girl", "Raspberry Beret", "Bubba Gump", "Bone A Friend"
   - lineage:
+- South Sound Shitshow H3
+  - id: SS_SHITSHOW
+  - hareline:
+  - badges:
+  - first hash:
+  - founders:
+  - lineage:
 - South Sound H3
+  - id: SOUTH_SOUND
   - hareline:
   - first hash:
   - founders: "Moped", "Polepoundher", "Dirty Motherfucker", "Fist Deep"
   - lineage: 	Osan Bulgogi H3
 - Rain City H3
+  - id: RAIN_CITY
   - hareline:
-  -badges: SHIGGYLICIOUS
-  - first hash: 1995-12-31
-  - founders: Scott "Bone Blower" Gode
-  - lineage:	Bonn H3
+  - badges: SHIGGYLICIOUS
+  - first hash:
+  - founders:
+  - lineage:
 - Hank Hash
+  - id: HANK
   - hareline:
+  - badges: WALKER_FRIENDLY
   - first hash:
   - founders:
   - lineage:

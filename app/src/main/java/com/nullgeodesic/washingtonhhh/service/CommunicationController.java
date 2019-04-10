@@ -38,7 +38,7 @@ public class CommunicationController {
                     @Override
                     public void onResponse(String response) {
                         CalendarDto cal = new Gson().fromJson(response, CalendarDto.class);
-                        ContentHolder.setItems(cal.events);
+                        ContentHolder.setItems(cal.events, cal.kennels);
                         Log.v(TAG, cal.toString());
                         final Intent intent = new Intent(activity, EventListActivity.class);
                         activity.startActivity(intent);

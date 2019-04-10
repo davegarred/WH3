@@ -39,7 +39,7 @@ public class EventListActivity extends AppCompatActivity {
         });
 
         final ListView listView = (ListView) findViewById(R.id.content_event_list_view);
-        final ArrayAdapter<HashEventDto> arrayAdapter = new EventListAdapter(this, R.layout.content_event_list_item_no_kennel, R.id.list_item_name_textview, ContentHolder.ITEMS);
+        final ArrayAdapter<HashEventDto> arrayAdapter = new EventListAdapter(this, R.layout.content_event_list_item_no_kennel, R.id.list_item_name_textview, ContentHolder.allEvents);
         listView.setAdapter(arrayAdapter);
 
         final Activity currentActivity = this;

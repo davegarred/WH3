@@ -1,6 +1,7 @@
 package com.nullgeodesic.washingtonhhh.service;
 
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
+import com.nullgeodesic.washingtonhhh.dto.Kennel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,21 +12,30 @@ public class ContentHolder {
 
     public static final String EVENT_DETAIL_ID = "event_id";
 
-    public static List<HashEventDto> ITEMS = new ArrayList<>();
-    public static Map<String, HashEventDto> ITEM_MAP = new HashMap<>();
+    public static List<HashEventDto> allEvents = new ArrayList<>();
+    public static Map<String, HashEventDto> eventMap = new HashMap<>();
+    public static Map<String, Kennel> kennelMap = new HashMap<>();
     private static String message = "";
 
-    private static void addItem(HashEventDto item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.googleId, item);
+    public static void setItems(final List<HashEventDto> events, final List<Kennel> kennels) {
+        allEvents.clear();
+        eventMap.clear();
+        for (HashEventDto event : events) {
+            allEvents.add(event);
+            eventMap.put(event.googleId, event);
+        }
+        kennelMap.clear();
+        for (final Kennel kennel : kennels) {
+            kennelMap.put(kennel.id, kennel);
+        }
     }
 
-    public static void setItems(final List<HashEventDto> events) {
-        ITEMS.clear();
-        ITEM_MAP.clear();
-        for(HashEventDto event : events) {
-            addItem(event);
+    public static Kennel kennel(final String kennelId) {
+        final Kennel kennel = kennelMap.get(kennelId);
+        if (kennel == null) {
+            return Kennel.UNKNOWN;
         }
+        return kennel;
     }
 
     public static void setMessage(String msg) {

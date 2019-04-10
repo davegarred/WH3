@@ -24,7 +24,7 @@ public class HashEventDto {
     public String eventName;
     public String description;
     public String mapLink;
-    public Kennel kennel;
+    public String kennel;
 
     public String dateForListing() {
         try {

@@ -3,9 +3,17 @@ package com.nullgeodesic.washingtonhhh.dto;
 import com.nullgeodesic.washingtonhhh.R;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Kennel {
+
+    public static final Kennel UNKNOWN = new Kennel();
+
+    static {
+        UNKNOWN.id = "UNKNOWN";
+        UNKNOWN.name = "";
+    }
 
     private static final Map<String, Integer> KENNEL_LOGOS = new HashMap<>();
 
@@ -22,6 +30,12 @@ public class Kennel {
     public String id;
     public String name;
     public String alternativeImage;
+    public String hareraiserName;
+    public String hareraiserEmail;
+    public String firstHash;
+    public String founders;
+    public String lineage;
+    public List<String> badges;
 
     public boolean isUnknown() {
         return "UNKNOWN".equals(this.id);
@@ -34,4 +48,5 @@ public class Kennel {
         }
         return drawableId;
     }
+
 }

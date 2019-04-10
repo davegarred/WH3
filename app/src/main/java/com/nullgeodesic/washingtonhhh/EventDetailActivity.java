@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
+import com.nullgeodesic.washingtonhhh.dto.Kennel;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
 
 import java.util.regex.Pattern;
@@ -27,11 +28,12 @@ public class EventDetailActivity extends AppCompatActivity {
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.activity_event_detail_floating_action_button);
         final TextView eventDescription = (TextView) findViewById(R.id.content_event_detail_description);
 
-
         setSupportActionBar(toolbar);
 
         int position = getIntent().getIntExtra("position", 0);
-        final HashEventDto hashEvent = ContentHolder.ITEMS.get(position);
+        final HashEventDto hashEvent = ContentHolder.allEvents.get(position);
+        final Kennel kennel = ContentHolder.kennel(hashEvent.kennel);
+
         final String mapLink = hashEvent.mapLink;
         if (mapLink == null) {
             fab.hide();
@@ -45,8 +47,8 @@ public class EventDetailActivity extends AppCompatActivity {
                 }
             });
         }
-        final int kennelDrawableId = hashEvent.kennel.drawableId();
-        if(kennelDrawableId == 0) {
+        final int kennelDrawableId = kennel.drawableId();
+        if (kennelDrawableId == 0) {
             kennelLogo.setVisibility(View.INVISIBLE);
         } else {
             kennelLogo.setImageResource(kennelDrawableId);

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.nullgeodesic.washingtonhhh.R;
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
+import com.nullgeodesic.washingtonhhh.dto.Kennel;
 
 import java.util.List;
 
@@ -33,12 +34,13 @@ public class EventListAdapter extends ArrayAdapter<HashEventDto> {
     }
 
     private View baseView(ViewGroup parent, final HashEventDto event) {
+        final Kennel kennel = ContentHolder.kennel(event.kennel);
         final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if(event.kennel.id.equals("UNKNOWN")) {
+        if (kennel.isUnknown()) {
             return inflater.inflate(R.layout.content_event_list_item_no_kennel, parent, false);
         }
         final View view = inflater.inflate(R.layout.content_event_list_item_kennel, parent, false);
-        textView(view, R.id.list_item_kennel_textview, event.kennel.name);
+        textView(view, R.id.list_item_kennel_textview, kennel.name);
         return view;
     }
 
