@@ -48,7 +48,7 @@
   - founders: STP, Olde E, Ground Control, HI-V, Captn Jack, Bushfucker
   - lineage:
 - Giggity H3
--   id: GIGGITY
+  - id: GIGGITY
   - hareline:
   - first hash: 2015-12-02
   - founders: "Jack Off More Men", "Low TempHo", "Heiney Girl", "Raspberry Beret", "Bubba Gump", "Bone A Friend"

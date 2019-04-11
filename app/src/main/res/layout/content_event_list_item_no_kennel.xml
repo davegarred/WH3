@@ -15,8 +15,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/list_item_name_textview"
@@ -24,9 +25,7 @@
             android:layout_height="wrap_content"
             android:text="Some Event - and more details, etc., etc."
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
