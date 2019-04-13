@@ -29,15 +29,6 @@ public class EventListActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.activity_event_list_floating_action_button);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "No idea what we're doing here", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         final ListView listView = (ListView) findViewById(R.id.content_event_list_view);
         final ArrayAdapter<HashEventDto> arrayAdapter = new EventListAdapter(this, R.layout.content_event_list_item_no_kennel, R.id.list_item_name_textview, ContentHolder.allEvents);
         listView.setAdapter(arrayAdapter);
@@ -47,7 +38,7 @@ public class EventListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final Intent intent = new Intent(currentActivity, EventDetailActivity.class);
-                intent.putExtra("position", position);
+                intent.putExtra(EventDetailActivity.EVENT_EXTRA, position);
                 currentActivity.startActivity(intent);
             }
         });
