@@ -43,7 +43,7 @@
   - lineage: Samurai H3, Okinawa, Taipei, Singapore
 - Holy Shit! WTF? H3
   - id: HSWTF
-  - hareline:
+  - hareline: Sniff Then Penetrate
   - first hash: 2011-08-07
   - founders: STP, Olde E, Ground Control, HI-V, Captn Jack, Bushfucker
   - lineage: Tidewater, Okinawa, Taipei, Singapore, Kuala Lumpur
@@ -70,13 +70,13 @@
   - id: RAIN_CITY
   - hareline:
   - badges: SHIGGYLICIOUS
-  - first hash:
-  - founders:
+  - first hash: 1995-12-31
+  - founders: Scott "Bone Blower" Gode
   - lineage: Bonn, Melbourne, Penang, Singapore
 - Hank Hash
   - id: HANK
-  - hareline:
+  - hareline: Fucking Shittarded  hankhash360@gmail.com
   - badges: WALKER_FRIENDLY
-  - first hash:
-  - founders:
-  - lineage:
+  - first hash: 2017-07-09
+  - founders: Stinkin Pussy, Anal Rose
+  - lineage: Humpin (San Diego)
