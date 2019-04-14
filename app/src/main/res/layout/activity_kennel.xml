@@ -4,28 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FFFFFF"
+    android:orientation="vertical"
     tools:context=".service.KennelActivity">
 
 
-        <ImageView
-            android:id="@+id/activity_kennel_logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:padding="10dp"
-            app:srcCompat="@drawable/logo_seamon" />
+    <ImageView
+        android:id="@+id/activity_kennel_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="10dp"
+        app:srcCompat="@drawable/logo_seamon" />
 
-        <TextView
-            android:id="@+id/activity_kennel_hash_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="SeaMon H3"
-            android:textSize="32dp"
-            android:paddingBottom="10dp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/activity_kennel_hash_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingBottom="10dp"
+        android:text="SeaMon H3"
+        android:textSize="32dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/activity_kennel_description"
@@ -35,59 +35,81 @@
         android:text="This is an all men's group that runs on the first and third Saturday mornings during the Winter months - and on first and third Thursday nights during the Summer months." />
 
     <TableLayout
+        android:id="@+id/activity_kennel_details_table"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <TableRow
+            android:id="@+id/activity_kennel_tablerow_founders"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp">
+            android:layout_height="match_parent">
 
-            <TableRow
-                android:id="@+id/activity_kennel_tablerow_hareraiser"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Hareraiser: "/>
+                android:layout_height="wrap_content"
+                android:text="Founders: " />
 
-                <TextView
-                    android:id="@+id/activity_kennel_hareraiser_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Dick in a Box"/>
-            </TableRow>
-            <TableRow
-                android:id="@+id/activity_kennel_tablerow_founders"
+
+            <TextView
+                android:id="@+id/activity_kennel_founders"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Founders: "/>
+                android:layout_height="wrap_content"
+                android:maxLines="100"
+                android:scrollHorizontally="false"
+                android:text="Bill 'Groper' Goelzer\nJohn 'Wrong Way' Moe\nJohn 'Cripple' Witsoe" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/activity_kennel_founders"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollHorizontally="false"
-                    android:maxLines="100"
-                    android:text="Bill 'Groper' Goelzer, John 'Wrong Way' Moe, John 'Cripple' Witsoe"/>
-            </TableRow>
-            <TableRow
-                android:id="@+id/activity_kennel_tablerow_lineage"
+        <TableRow
+            android:id="@+id/activity_kennel_tablerow_lineage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Parent hash: "/>
+                android:layout_height="wrap_content"
+                android:text="Parent hash: " />
 
-                <TextView
-                    android:id="@+id/activity_kennel_lineage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tehran H3"/>
-            </TableRow>
+            <TextView
+                android:id="@+id/activity_kennel_lineage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tehran H3" />
+        </TableRow>
 
+        <TableRow
+            android:id="@+id/activity_kennel_tablerow_founding"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="First run: " />
+
+            <TextView
+                android:id="@+id/activity_kennel_founding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1989-03-31" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/activity_kennel_tablerow_hareraiser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hareraiser: " />
+
+            <TextView
+                android:id="@+id/activity_kennel_hareraiser_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dick in a Box" />
+        </TableRow>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/activity_kennel_email_fab"
@@ -97,10 +119,6 @@
             android:layout_margin="@dimen/fab_margin"
             app:srcCompat="@android:drawable/ic_dialog_email" />
 
-
-
     </TableLayout>
-
-
 
 </LinearLayout>

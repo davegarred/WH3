@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -27,12 +28,15 @@ public class KennelActivity extends AppCompatActivity {
         final ImageView kennelLogo = findViewById(R.id.activity_kennel_logo);
         final TextView kennelName = findViewById(R.id.activity_kennel_hash_name);
         final TextView kennelDescription = findViewById(R.id.activity_kennel_description);
-        final TableRow hareraiserRow = findViewById(R.id.activity_kennel_tablerow_hareraiser);
+        final TableLayout detailsTable = findViewById(R.id.activity_kennel_details_table);
+//        final TableRow hareraiserRow = findViewById(R.id.activity_kennel_tablerow_hareraiser);
         final TextView hareraiserName = findViewById(R.id.activity_kennel_hareraiser_name);
-        final TableRow foundersRow = findViewById(R.id.activity_kennel_tablerow_founders);
+//        final TableRow foundersRow = findViewById(R.id.activity_kennel_tablerow_founders);
         final TextView founders = findViewById(R.id.activity_kennel_founders);
-        final TableRow lineageRow = findViewById(R.id.activity_kennel_tablerow_lineage);
+//        final TableRow lineageRow = findViewById(R.id.activity_kennel_tablerow_lineage);
         final TextView lineage = findViewById(R.id.activity_kennel_lineage);
+        final TableRow foundedRow = findViewById(R.id.activity_kennel_tablerow_founding);
+        final TextView founded = findViewById(R.id.activity_kennel_founding);
         final FloatingActionButton emailFab = findViewById(R.id.activity_kennel_email_fab);
 
 
@@ -43,10 +47,17 @@ public class KennelActivity extends AppCompatActivity {
         } else {
             kennelLogo.setImageResource(kennelDrawableId);
         }
+        kennelName.setText(kennel.name);
         kennelDescription.setText(kennel.description);
         hareraiserName.setText(kennel.hareraiserName);
         founders.setText(kennel.founders);
         lineage.setText(kennel.lineage);
+        final String firstHash = kennel.firstHash;
+        if(firstHash == null || firstHash.isEmpty()) {
+            detailsTable.removeView(foundedRow);
+        } else {
+            founded.setText(firstHash);
+        }
         emailFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
