@@ -1,4 +1,4 @@
-package com.nullgeodesic.washingtonhhh.service;
+package com.nullgeodesic.washingtonhhh;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.nullgeodesic.washingtonhhh.R;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
+import com.nullgeodesic.washingtonhhh.service.ContentHolder;
 
 
 public class KennelActivity extends AppCompatActivity {
@@ -49,7 +50,7 @@ public class KennelActivity extends AppCompatActivity {
         }
         kennelName.setText(kennel.name);
         kennelDescription.setText(kennel.description);
-        founders.setText(kennel.founders);
+        founders.setText(kennel.founders.replaceAll(", ","\n"));
         lineage.setText(kennel.lineage);
         final String firstHash = kennel.firstHash;
         if(firstHash == null || firstHash.isEmpty()) {

@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
-import com.nullgeodesic.washingtonhhh.service.KennelActivity;
 
 import java.util.regex.Pattern;
 
