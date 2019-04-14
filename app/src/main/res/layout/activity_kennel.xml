@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".service.KennelActivity">
 
-
     <ImageView
         android:id="@+id/activity_kennel_logo"
         android:layout_width="match_parent"
@@ -49,7 +48,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Founders: " />
-
 
             <TextView
                 android:id="@+id/activity_kennel_founders"

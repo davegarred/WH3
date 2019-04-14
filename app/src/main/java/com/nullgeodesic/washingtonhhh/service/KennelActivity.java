@@ -49,7 +49,6 @@ public class KennelActivity extends AppCompatActivity {
         }
         kennelName.setText(kennel.name);
         kennelDescription.setText(kennel.description);
-        hareraiserName.setText(kennel.hareraiserName);
         founders.setText(kennel.founders);
         lineage.setText(kennel.lineage);
         final String firstHash = kennel.firstHash;
@@ -58,13 +57,14 @@ public class KennelActivity extends AppCompatActivity {
         } else {
             founded.setText(firstHash);
         }
+        hareraiserName.setText(kennel.hareraiserName);
         emailFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.putExtra(Intent.EXTRA_EMAIL, new String[]{"fbeavershit@gmail.com"});
                 email.putExtra(Intent.EXTRA_SUBJECT, kennel.name + " trails");
-                email.putExtra(Intent.EXTRA_TEXT,kennel.hareraiserEmail);
+                email.putExtra(Intent.EXTRA_TEXT,"This is a placeholder email (please don't send it). After deployment this will be sent to: " + kennel.hareraiserEmail);
                 email.setType("message/rfc822");
                 startActivity(Intent.createChooser(email,"Contact the hareraiser"));
             }

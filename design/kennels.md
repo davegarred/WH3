@@ -40,7 +40,7 @@
   - hareline: Tight Sticky Bush  rondal@myuw.net
   - first hash: 1987-03-07
   - founders: 	Lewis "Bunny Phu Phu" Giles
-  - lineage: Samurai H3
+  - lineage: Samurai H3, Okinawa, Taipei, Singapore
 - Holy Shit! WTF? H3
   - id: HSWTF
   - hareline:
@@ -59,7 +59,7 @@
   - badges:
   - first hash:
   - founders:
-  - lineage:
+  - lineage: Osan Bulgogi H3, Yongsan Kimchi, Samarai
 - South Sound H3
   - id: SOUTH_SOUND
   - hareline:
@@ -72,7 +72,7 @@
   - badges: SHIGGYLICIOUS
   - first hash:
   - founders:
-  - lineage:
+  - lineage: Bonn, Melbourne, Penang, Singapore
 - Hank Hash
   - id: HANK
   - hareline:
