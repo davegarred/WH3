@@ -25,6 +25,7 @@
   - id: PUGET_SOUND
   - hareline: Dick in a Box  diab@wh3.org
   - badges:
+  - first hash: 1981-03-08
   - founders: Bill "Groper" Goelzer, John "Wrong Way" Moe, John "Cripple" Witsoe
   - lineage: Tehran H3 - Hong Kong - Singapore - Kuala Lumpur
 - Puget Sound No Balls H3
@@ -39,7 +40,7 @@
   - id: TACOMA
   - hareline: Tight Sticky Bush  rondal@myuw.net
   - first hash: 1987-03-07
-  - founders: 	Lewis "Bunny Phu Phu" Giles
+  - founders: 	Lewis 'Bunny Phu Phu' Giles
   - lineage: Samurai H3, Okinawa, Taipei, Singapore
 - Holy Shit! WTF? H3
   - id: HSWTF
@@ -56,6 +57,7 @@
 - South Sound Shitshow H3
   - id: SS_SHITSHOW
   - hareline:
+  - first hash: 2019-02-16
   - badges:
   - first hash:
   - founders:
