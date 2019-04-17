@@ -9,7 +9,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.nullgeodesic.washingtonhhh.EventListActivity;
+import com.nullgeodesic.washingtonhhh.MainActivity;
 import com.nullgeodesic.washingtonhhh.SplashActivity;
 import com.nullgeodesic.washingtonhhh.dto.CalendarDto;
 
@@ -40,7 +40,7 @@ public class CommunicationController {
                         CalendarDto cal = new Gson().fromJson(response, CalendarDto.class);
                         ContentHolder.setItems(cal.events, cal.kennels);
                         Log.v(TAG, cal.toString());
-                        final Intent intent = new Intent(activity, EventListActivity.class);
+                        final Intent intent = new Intent(activity, MainActivity.class);
                         activity.startActivity(intent);
                     }
                 }, new Response.ErrorListener() {

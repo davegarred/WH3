@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_kennel"
+            android:icon="@drawable/icon_check"
+            android:title="Our kennels" />
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/icon_question"
+            android:title="FAQ" />
+
+    </group>
+
+    <item android:title="Contact Us">
+        <menu>
+            <item
+                android:id="@+id/nav_hareraiser"
+                android:icon="@drawable/icon_hare"
+                android:title="Hare a trail" />
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/icon_help_out"
+                android:title="Help us out" />
+        </menu>
+    </item>
+
+</menu>
