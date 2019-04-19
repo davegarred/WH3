@@ -1,17 +1,18 @@
 package com.nullgeodesic.washingtonhhh;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nullgeodesic.washingtonhhh.click_listener.EventMapClickListener;
+import com.nullgeodesic.washingtonhhh.click_listener.KennelClickListener;
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
@@ -42,34 +43,28 @@ public class EventDetailActivity extends AppCompatActivity {
         if (mapLink == null) {
             fab.hide();
         } else {
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    final Intent mapIntent = new Intent(Intent.ACTION_VIEW);
-                    mapIntent.setData(Uri.parse(mapLink));
-                    startActivity(mapIntent);
-                }
-            });
+            fab.setOnClickListener(new EventMapClickListener(this, mapLink));
         }
         final int kennelDrawableId = kennel.drawableId();
         if (kennelDrawableId == 0) {
             kennelLogo.setVisibility(View.INVISIBLE);
         } else {
             kennelLogo.setImageResource(kennelDrawableId);
-            kennelLogo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final Intent intent = new Intent(currentActivity, KennelActivity.class);
-                    intent.putExtra(KennelActivity.KENNEL_EXTRA, kennel.id);
-                    currentActivity.startActivity(intent);
-                }
-            });
+            kennelLogo.setOnClickListener(new KennelClickListener(this, kennel.id));
         }
 
         toolbar.setTitle(hashEvent.eventName);
 
-        final boolean hasHtml = Pattern.compile("<[^>]*>").matcher(hashEvent.description).find();
-        final CharSequence description = hasHtml ? Html.fromHtml(hashEvent.description) : hashEvent.description;
+        final CharSequence description = formatDescription(hashEvent);
         eventDescription.setText(description);
+    }
+
+    private CharSequence formatDescription(HashEventDto hashEvent) {
+        String baseDescription = hashEvent.description;
+//                .replace("'", "&apos;")
+//                .replace("‘", "&apos;")
+//                .replace("’", "&apos;")
+        final boolean hasHtml = Pattern.compile("<[^>]*>").matcher(baseDescription).find();
+        return hasHtml ? Html.fromHtml(baseDescription) : baseDescription;
     }
 }

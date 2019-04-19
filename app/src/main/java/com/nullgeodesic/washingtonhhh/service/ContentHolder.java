@@ -30,6 +30,15 @@ public class ContentHolder {
         }
     }
 
+    public static Integer nextEventForKennel(final String kennelId) {
+        for (int i = 0; i < allEvents.size(); i++) {
+            if (kennelId.equals(allEvents.get(i).kennel)) {
+                return i;
+            }
+        }
+        return null;
+    }
+
     public static Kennel kennel(final String kennelId) {
         final Kennel kennel = kennelMap.get(kennelId);
         if (kennel == null) {

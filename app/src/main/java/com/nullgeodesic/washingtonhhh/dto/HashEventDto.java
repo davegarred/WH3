@@ -15,6 +15,7 @@ public class HashEventDto {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     private static final SimpleDateFormat LISTING_FORMAT = new SimpleDateFormat("EEE\nMMM d");
+    private static final SimpleDateFormat NEXT_EVENT_FORMAT = new SimpleDateFormat("EEEE, MMMM d");
 
     public String googleId;
     public String date;
@@ -30,6 +31,15 @@ public class HashEventDto {
         try {
             final Date eventDate = DATE_FORMAT.parse(date);
             return LISTING_FORMAT.format(eventDate);
+        } catch (ParseException e) {
+            Log.v(TAG, "error parsing date " + date, e);
+            return "";
+        }
+    }
+    public String dateForNextEvent() {
+        try {
+            final Date eventDate = DATE_FORMAT.parse(date);
+            return NEXT_EVENT_FORMAT.format(eventDate);
         } catch (ParseException e) {
             Log.v(TAG, "error parsing date " + date, e);
             return "";

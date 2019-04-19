@@ -10,8 +10,12 @@ Repo:
 
 TODOs:
 
-- improve kennel logos
+- better HSWTF logo
+- new splash screen
+- *Next run* section on kennel pages
+- an actual web page
 - add local data storage
+- gracefully recovery from network failure
 - wire up Lambda triggers
 
 

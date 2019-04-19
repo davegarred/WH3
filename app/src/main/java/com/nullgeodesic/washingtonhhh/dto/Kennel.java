@@ -11,6 +11,14 @@ public class Kennel {
 
     public static final Kennel UNKNOWN = new Kennel();
 
+    public static final String PUGET_SOUND = "PUGET_SOUND";
+    public static final String NO_BALLS = "NO_BALLS";
+    public static final String SEATTLE = "SEATTLE";
+    public static final String RAIN_CITY = "RAIN_CITY";
+    public static final String HSWTF = "HSWTF";
+    public static final String SEAMON = "SEAMON";
+    public static final String TACOMA = "TACOMA";
+
     static {
         UNKNOWN.id = "UNKNOWN";
         UNKNOWN.name = "";
@@ -20,13 +28,14 @@ public class Kennel {
     private static final Map<String, Integer> BADGES = new HashMap<>();
 
     static {
-        KENNEL_LOGOS.put("SEATTLE", R.drawable.logo_seattle);
-        KENNEL_LOGOS.put("SEAMON", R.drawable.logo_seamon);
-        KENNEL_LOGOS.put("RAIN_CITY", R.drawable.logo_raincity);
-        KENNEL_LOGOS.put("HSWTF", R.drawable.logo_hswtf);
-        KENNEL_LOGOS.put("PUGET_SOUND", R.drawable.logo_puget);
-        KENNEL_LOGOS.put("NO_BALLS", R.drawable.logo_nbh3);
-        KENNEL_LOGOS.put("TACOMA", R.drawable.logo_tacoma);
+        KENNEL_LOGOS.put(PUGET_SOUND, R.drawable.logo_puget);
+        KENNEL_LOGOS.put(NO_BALLS, R.drawable.logo_nbh3);
+        KENNEL_LOGOS.put(SEATTLE, R.drawable.logo_seattle);
+        KENNEL_LOGOS.put(RAIN_CITY, R.drawable.logo_raincity);
+        KENNEL_LOGOS.put(HSWTF, R.drawable.logo_hswtf);
+        KENNEL_LOGOS.put(SEAMON, R.drawable.logo_seamon);
+        KENNEL_LOGOS.put(TACOMA, R.drawable.logo_tacoma);
+
         BADGES.put("WALKER_FRIENDLY", R.drawable.walker_badge);
         BADGES.put("PAVEMENT_POUNDER", R.drawable.pavement_badge);
         BADGES.put("SHIGGY", R.drawable.shiggy_badge);

@@ -3,29 +3,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_kennel"
-            android:icon="@drawable/icon_check"
-            android:title="Our kennels" />
-        <item
-            android:id="@+id/nav_faq"
-            android:icon="@drawable/icon_question"
-            android:title="FAQ" />
+    <!--<group android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/nav_kennel"-->
+            <!--android:icon="@drawable/icon_check"-->
+            <!--android:title="Our kennels" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_faq"-->
+            <!--android:icon="@drawable/icon_question"-->
+            <!--android:title="FAQ" />-->
 
-    </group>
+    <!--</group>-->
 
-    <item android:title="Contact Us">
+    <item android:title="Our Kennels">
         <menu>
             <item
-                android:id="@+id/nav_hareraiser"
-                android:icon="@drawable/icon_hare"
-                android:title="Hare a trail" />
+                android:id="@+id/nav_kennel_puget_sound"
+                android:title="Puget Sound H3" />
             <item
-                android:id="@+id/nav_help"
-                android:icon="@drawable/icon_help_out"
-                android:title="Help us out" />
+                android:id="@+id/nav_kennel_no_balls"
+                android:title="No Balls H3" />
+            <item
+                android:id="@+id/nav_kennel_seattle"
+                android:title="Seattle H3" />
+            <item
+                android:id="@+id/nav_kennel_rain_city"
+                android:title="Rain City" />
+            <!--android:icon="@drawable/logo_puget"-->
+            <item
+                android:id="@+id/nav_kennel_hswtf"
+                android:title="Holy Shit! WTF?" />
+            <!--android:icon="@drawable/logo_puget"-->
+            <item
+                android:id="@+id/nav_kennel_tacoma"
+                android:title="Tacoma H3" />
+            <!--android:icon="@drawable/logo_puget"-->
+            <item
+                android:id="@+id/nav_kennel_seamon"
+                android:title="SeaMon H3" />
+            <!--android:icon="@drawable/logo_puget"-->
         </menu>
     </item>
+
+    <!--<item android:title="About">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_contact_us"-->
+                <!--android:icon="@drawable/icon_help_out"-->
+                <!--android:title="Contact me" />-->
+        <!--</menu>-->
+    <!--</item>-->
 
 </menu>

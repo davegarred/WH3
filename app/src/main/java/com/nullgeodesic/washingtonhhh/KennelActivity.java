@@ -13,6 +13,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.nullgeodesic.washingtonhhh.click_listener.EventDetailClickListener;
+import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
 
@@ -37,6 +39,8 @@ public class KennelActivity extends AppCompatActivity {
         final TextView lineage = findViewById(R.id.activity_kennel_lineage);
         final TableRow foundedRow = findViewById(R.id.activity_kennel_tablerow_founding);
         final TextView founded = findViewById(R.id.activity_kennel_founding);
+        final TableRow nextEventRow = findViewById(R.id.activity_kennel_tablerow_next_event);
+        final TextView nextEventTextView = findViewById(R.id.activity_kennel_next_event);
         final FloatingActionButton emailFab = findViewById(R.id.activity_kennel_email_fab);
 
 
@@ -69,6 +73,17 @@ public class KennelActivity extends AppCompatActivity {
             founded.setText(firstHash);
         }
         hareraiserName.setText(kennel.hareraiserName);
+
+        final Integer nextEventPos = ContentHolder.nextEventForKennel(kennelId);
+        if (nextEventPos == null) {
+            detailsTable.removeView(nextEventRow);
+        } else {
+            final HashEventDto nextEvent = ContentHolder.allEvents.get(nextEventPos);
+            final String eventListing = nextEvent.dateForNextEvent() + "\n" + nextEvent.eventName;
+            nextEventTextView.setText(eventListing);
+            nextEventTextView.setOnClickListener(new EventDetailClickListener(this, nextEventPos));
+        }
+
         emailFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".KennelActivity">
 
     <ImageView
@@ -116,6 +116,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dick in a Box" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/activity_kennel_tablerow_next_event"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Next run: " />
+
+            <TextView
+                android:id="@+id/activity_kennel_next_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="11th Anal RCH3 BEERMILE" />
         </TableRow>
 
         <android.support.design.widget.FloatingActionButton

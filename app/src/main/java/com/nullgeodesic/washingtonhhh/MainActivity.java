@@ -1,11 +1,7 @@
 package com.nullgeodesic.washingtonhhh;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,11 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.nullgeodesic.washingtonhhh.click_listener.EventDetailAdapterViewClickListener;
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
+import com.nullgeodesic.washingtonhhh.dto.Kennel;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
 import com.nullgeodesic.washingtonhhh.service.EventListAdapter;
 
@@ -45,15 +42,7 @@ public class MainActivity extends AppCompatActivity
         final ArrayAdapter<HashEventDto> arrayAdapter = new EventListAdapter(this, R.layout.content_event_list_item_no_kennel, R.id.list_item_name_textview, ContentHolder.allEvents);
         listView.setAdapter(arrayAdapter);
 
-        final Activity currentActivity = this;
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final Intent intent = new Intent(currentActivity, EventDetailActivity.class);
-                intent.putExtra(EventDetailActivity.EVENT_EXTRA, position);
-                currentActivity.startActivity(intent);
-            }
-        });
+        listView.setOnItemClickListener(new EventDetailAdapterViewClickListener(this));
     }
 
     @Override
@@ -96,18 +85,47 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.nav_kennel:
+            case R.id.nav_kennel_puget_sound:
+                kennelActivity(Kennel.PUGET_SOUND);
                 break;
-            case R.id.nav_faq:
+            case R.id.nav_kennel_no_balls:
+                kennelActivity(Kennel.NO_BALLS);
                 break;
-            case R.id.nav_hareraiser:
+            case R.id.nav_kennel_seattle:
+                kennelActivity(Kennel.SEATTLE);
                 break;
-            case R.id.nav_help:
+            case R.id.nav_kennel_rain_city:
+                kennelActivity(Kennel.RAIN_CITY);
                 break;
+            case R.id.nav_kennel_hswtf:
+                kennelActivity(Kennel.HSWTF);
+                break;
+            case R.id.nav_kennel_seamon:
+                kennelActivity(Kennel.SEAMON);
+                break;
+            case R.id.nav_kennel_tacoma:
+                kennelActivity(Kennel.TACOMA);
+                break;
+//            case R.id.nav_contact_us:
+//                informationalActivity("come help us out!", R.id.activity_informational_content_layout_help_us);
+//                break;
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void kennelActivity(final String kennel) {
+        final Intent intent = new Intent(this, KennelActivity.class);
+        intent.putExtra(KennelActivity.KENNEL_EXTRA, kennel);
+        startActivity(intent);
+    }
+
+    private void informationalActivity(final String title, final int target) {
+        final Intent intent = new Intent(this, InformationalActivity.class);
+        intent.putExtra(InformationalActivity.INFORMATIONAL_TITLE_EXTRA, title);
+        intent.putExtra(InformationalActivity.INFORMATIONAL_TARGET_EXTRA, target);
+        startActivity(intent);
     }
 }
