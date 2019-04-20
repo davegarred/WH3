@@ -10,11 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.nullgeodesic.washingtonhhh.click_listener.EventDetailAdapterViewClickListener;
-import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
 import com.nullgeodesic.washingtonhhh.service.EventListAdapter;
@@ -26,22 +24,20 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        final NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final ListView listView = (ListView) findViewById(R.id.content_event_list_view);
-        final ArrayAdapter<HashEventDto> arrayAdapter = new EventListAdapter(this, R.layout.content_event_list_item_no_kennel, R.id.list_item_name_textview, ContentHolder.allEvents);
-        listView.setAdapter(arrayAdapter);
-
+        final ListView listView = findViewById(R.id.content_event_list_view);
+        listView.setAdapter(new EventListAdapter(this));
         listView.setOnItemClickListener(new EventDetailAdapterViewClickListener(this));
     }
 
@@ -105,6 +101,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_kennel_tacoma:
                 kennelActivity(Kennel.TACOMA);
+                break;
+            case R.id.nav_kennel_ssss:
+                kennelActivity(Kennel.SS_SHITSHOW);
                 break;
 //            case R.id.nav_contact_us:
 //                informationalActivity("come help us out!", R.id.activity_informational_content_layout_help_us);

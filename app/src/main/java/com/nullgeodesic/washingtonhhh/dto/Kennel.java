@@ -18,6 +18,7 @@ public class Kennel {
     public static final String HSWTF = "HSWTF";
     public static final String SEAMON = "SEAMON";
     public static final String TACOMA = "TACOMA";
+    public static final String SS_SHITSHOW = "SS_SHITSHOW";
 
     static {
         UNKNOWN.id = "UNKNOWN";
@@ -35,6 +36,7 @@ public class Kennel {
         KENNEL_LOGOS.put(HSWTF, R.drawable.logo_hswtf);
         KENNEL_LOGOS.put(SEAMON, R.drawable.logo_seamon);
         KENNEL_LOGOS.put(TACOMA, R.drawable.logo_tacoma);
+        KENNEL_LOGOS.put(SS_SHITSHOW, R.drawable.logo_ssss);
 
         BADGES.put("WALKER_FRIENDLY", R.drawable.walker_badge);
         BADGES.put("PAVEMENT_POUNDER", R.drawable.pavement_badge);

@@ -1,6 +1,5 @@
 package com.nullgeodesic.washingtonhhh;
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +12,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.nullgeodesic.washingtonhhh.click_listener.EmailClickListener;
 import com.nullgeodesic.washingtonhhh.click_listener.EventDetailClickListener;
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
@@ -28,19 +28,21 @@ public class KennelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kennel);
 
+        final LinearLayout mainLayout = findViewById(R.id.activity_kennel_layout);
         final String kennelId = getIntent().getStringExtra(KENNEL_EXTRA);
         final ImageView kennelLogo = findViewById(R.id.activity_kennel_logo);
         final TextView kennelName = findViewById(R.id.activity_kennel_hash_name);
         final LinearLayout badgeLayout = findViewById(R.id.activity_kennel_badge_layout);
         final TextView kennelDescription = findViewById(R.id.activity_kennel_description);
         final TableLayout detailsTable = findViewById(R.id.activity_kennel_details_table);
-        final TextView hareraiserName = findViewById(R.id.activity_kennel_hareraiser_name);
         final TextView founders = findViewById(R.id.activity_kennel_founders);
         final TextView lineage = findViewById(R.id.activity_kennel_lineage);
         final TableRow foundedRow = findViewById(R.id.activity_kennel_tablerow_founding);
         final TextView founded = findViewById(R.id.activity_kennel_founding);
-        final TableRow nextEventRow = findViewById(R.id.activity_kennel_tablerow_next_event);
-        final TextView nextEventTextView = findViewById(R.id.activity_kennel_next_event);
+        final TextView nextRunTitle = findViewById(R.id.activity_kennel_next_run_title);
+        final LinearLayout nextRunLayout = findViewById(R.id.activity_kennel_next_run_layout);
+        final TextView nextRunDate = findViewById(R.id.activity_kennel_next_run_date);
+        final TextView nextRunDescription = findViewById(R.id.activity_kennel_next_run_description);
         final FloatingActionButton emailFab = findViewById(R.id.activity_kennel_email_fab);
 
 
@@ -72,28 +74,18 @@ public class KennelActivity extends AppCompatActivity {
         } else {
             founded.setText(firstHash);
         }
-        hareraiserName.setText(kennel.hareraiserName);
 
         final Integer nextEventPos = ContentHolder.nextEventForKennel(kennelId);
         if (nextEventPos == null) {
-            detailsTable.removeView(nextEventRow);
+            mainLayout.removeView(nextRunTitle);
+            mainLayout.removeView(nextRunLayout);
         } else {
             final HashEventDto nextEvent = ContentHolder.allEvents.get(nextEventPos);
-            final String eventListing = nextEvent.dateForNextEvent() + "\n" + nextEvent.eventName;
-            nextEventTextView.setText(eventListing);
-            nextEventTextView.setOnClickListener(new EventDetailClickListener(this, nextEventPos));
+            nextRunDate.setText(nextEvent.dateForNextEvent());
+            nextRunDescription.setText(nextEvent.eventName);
+            nextRunLayout.setOnClickListener(new EventDetailClickListener(this, nextEventPos));
         }
 
-        emailFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent email = new Intent(Intent.ACTION_SEND);
-                email.putExtra(Intent.EXTRA_EMAIL, new String[]{"fbeavershit@gmail.com"});
-                email.putExtra(Intent.EXTRA_SUBJECT, kennel.name + " trails");
-                email.putExtra(Intent.EXTRA_TEXT, "This is a placeholder email (please don't send it). After deployment this will be sent to: " + kennel.hareraiserEmail);
-                email.setType("message/rfc822");
-                startActivity(Intent.createChooser(email, "Contact the hareraiser"));
-            }
-        });
+        emailFab.setOnClickListener(new EmailClickListener(this, kennel));
     }
 }

@@ -18,10 +18,10 @@ public class EventListAdapter extends ArrayAdapter<HashEventDto> {
     private final Context context;
     private final List<HashEventDto> events;
 
-    public EventListAdapter(final Context context, final int resource, int textViewResourceId, final List<HashEventDto> events) {
-        super(context, resource, textViewResourceId, events);
+    public EventListAdapter(final Context context) {
+        super(context, R.layout.content_event_list_item_no_kennel, R.id.list_item_name_textview, ContentHolder.allEvents);
         this.context = context;
-        this.events = events;
+        this.events = ContentHolder.allEvents;
     }
 
     @Override

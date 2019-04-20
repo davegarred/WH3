@@ -34,10 +34,13 @@
 
             <ImageView
                 android:id="@+id/activity_event_detail_kennel_logo"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
+                android:layout_gravity="right"
+                android:layout_margin="10dp"
+                android:elevation="5dp"
+                android:translationZ="5dp"
+                android:background="@android:drawable/list_selector_background"
                 app:srcCompat="@drawable/logo_puget" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
