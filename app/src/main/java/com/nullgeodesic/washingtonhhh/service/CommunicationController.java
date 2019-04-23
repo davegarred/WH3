@@ -14,16 +14,25 @@ import com.nullgeodesic.washingtonhhh.SplashActivity;
 import com.nullgeodesic.washingtonhhh.dto.CalendarDto;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 public class CommunicationController {
 
     private static final String TAG = CommunicationController.class.getSimpleName();
+    private static final String TARGET = "https://seahhh.nullgeodesic.com/seahhh";
 
     public static void kickoff(final SplashActivity activity) {
-        final String target = "https://seahhh.nullgeodesic.com/seahhh";
-
         try {
-            final Request request = retrieve(target, activity);
+            final Request request = retrieveAndStartMain(activity);
+            Volley.newRequestQueue(activity).add(request);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void update(final MainActivity activity) {
+        try {
+            final Request request = retrieve(activity);
             Volley.newRequestQueue(activity).add(request);
         } catch (IOException e) {
             e.printStackTrace();
@@ -31,15 +40,15 @@ public class CommunicationController {
     }
 
 
-    private static Request retrieve(String target, final SplashActivity activity) throws IOException {
+    private static Request retrieveAndStartMain(final SplashActivity activity) throws IOException {
         return new StringRequest
-                (Request.Method.GET, target, new Response.Listener<String>() {
+                (Request.Method.GET, TARGET, new Response.Listener<String>() {
 
                     @Override
                     public void onResponse(String response) {
-                        CalendarDto cal = new Gson().fromJson(response, CalendarDto.class);
+                        final CalendarDto cal = new Gson().fromJson(response, CalendarDto.class);
                         ContentHolder.setItems(cal.events, cal.kennels);
-                        Log.v(TAG, cal.toString());
+                        Log.v(TAG, "events first pulled at " + Calendar.getInstance().getTime());
                         final Intent intent = new Intent(activity, MainActivity.class);
                         activity.startActivity(intent);
                     }
@@ -48,7 +57,27 @@ public class CommunicationController {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.v(TAG, "some error: " + error.getMessage());
-                        activity.warn(error.getMessage());
+                        activity.warnNoNetwork();
+                    }
+                });
+    }
+
+    private static Request retrieve(final MainActivity activity) throws IOException {
+        return new StringRequest
+                (Request.Method.GET, TARGET, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        CalendarDto cal = new Gson().fromJson(response, CalendarDto.class);
+                        ContentHolder.setItems(cal.events, cal.kennels);
+                        Log.v(TAG, "events updated at " + Calendar.getInstance().getTime());
+                        activity.listUpdated();
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.v(TAG, "network error updating events: " + error.getMessage());
+                        activity.warnNoNetwork();
                     }
                 });
     }

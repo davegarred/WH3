@@ -13,7 +13,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
         if (getIntent().getBooleanExtra("EXIT", false)) {
             finish();
             return;
@@ -23,10 +22,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-    public void warn(String s) {
+    public void warnNoNetwork() {
         new AlertDialog.Builder(this)
-                .setTitle("Comm Error")
-                .setMessage(s)
+                .setTitle(R.string.no_network_connection)
                 .show();
     }
 

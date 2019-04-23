@@ -1,4 +1,4 @@
-package com.nullgeodesic.washingtonhhh.click_listener;
+package com.nullgeodesic.washingtonhhh.listener;
 
 import android.content.Context;
 import android.content.Intent;

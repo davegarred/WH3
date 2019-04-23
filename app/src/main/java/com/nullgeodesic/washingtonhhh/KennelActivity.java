@@ -12,8 +12,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.nullgeodesic.washingtonhhh.click_listener.EmailClickListener;
-import com.nullgeodesic.washingtonhhh.click_listener.EventDetailClickListener;
+import com.nullgeodesic.washingtonhhh.listener.EmailClickListener;
+import com.nullgeodesic.washingtonhhh.listener.EventDetailClickListener;
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;

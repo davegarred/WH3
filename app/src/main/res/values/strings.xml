@@ -25,4 +25,5 @@
         "If you'd like to tie your events in, contact me."
     </string>
     <string name="large_text"></string>
+    <string name="no_network_connection">Network error, unable to reach event server</string>
 </resources>

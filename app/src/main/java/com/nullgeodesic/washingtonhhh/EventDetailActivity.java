@@ -6,13 +6,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nullgeodesic.washingtonhhh.click_listener.EventMapClickListener;
-import com.nullgeodesic.washingtonhhh.click_listener.KennelClickListener;
+import com.nullgeodesic.washingtonhhh.listener.EventMapClickListener;
+import com.nullgeodesic.washingtonhhh.listener.KennelClickListener;
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;

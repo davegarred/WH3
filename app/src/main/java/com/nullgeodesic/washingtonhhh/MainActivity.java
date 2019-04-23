@@ -1,24 +1,33 @@
 package com.nullgeodesic.washingtonhhh;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.nullgeodesic.washingtonhhh.click_listener.EventDetailAdapterViewClickListener;
+import com.nullgeodesic.washingtonhhh.listener.EventDetailAdapterViewClickListener;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
-import com.nullgeodesic.washingtonhhh.service.ContentHolder;
+import com.nullgeodesic.washingtonhhh.service.CommunicationController;
 import com.nullgeodesic.washingtonhhh.service.EventListAdapter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ListView listView;
+    private EventListAdapter adapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +45,32 @@ public class MainActivity extends AppCompatActivity
         final NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final ListView listView = findViewById(R.id.content_event_list_view);
-        listView.setAdapter(new EventListAdapter(this));
+        this.swipeRefreshLayout = findViewById(R.id.content_event_swiperefresh);
+
+        this.adapter = new EventListAdapter(this);
+        this.listView = findViewById(R.id.content_event_list_view);
+        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new EventDetailAdapterViewClickListener(this));
+
+        final MainActivity context = this;
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                CommunicationController.update(context);
+            }
+        });
+
+
+    }
+
+    public void listUpdated() {
+        adapter.notifyDataSetChanged();
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    public void warnNoNetwork() {
+        swipeRefreshLayout.setRefreshing(false);
+        Snackbar.make(listView, R.string.no_network_connection, Snackbar.LENGTH_LONG).show();
     }
 
     @Override
