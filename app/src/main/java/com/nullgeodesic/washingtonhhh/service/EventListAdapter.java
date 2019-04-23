@@ -40,8 +40,15 @@ public class EventListAdapter extends ArrayAdapter<HashEventDto> {
             return inflater.inflate(R.layout.content_event_list_item_no_kennel, parent, false);
         }
         final View view = inflater.inflate(R.layout.content_event_list_item_kennel, parent, false);
-        textView(view, R.id.list_item_kennel_textview, kennel.name);
+        textView(view, R.id.list_item_kennel_textview, formatKennelName(kennel, event));
         return view;
+    }
+
+    private String formatKennelName(Kennel kennel, HashEventDto event) {
+        if(event.eventNumber != null && !event.eventNumber.isEmpty()){
+            return kennel.name + "  - run #" + event.eventNumber;
+        }
+        return kennel.name;
     }
 
     private static void textView(View parentView, int viewId, String text) {
