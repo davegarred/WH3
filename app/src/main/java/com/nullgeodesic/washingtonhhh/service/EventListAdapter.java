@@ -46,7 +46,7 @@ public class EventListAdapter extends ArrayAdapter<HashEventDto> {
 
     private String formatKennelName(Kennel kennel, HashEventDto event) {
         if(event.eventNumber != null && !event.eventNumber.isEmpty()){
-            return kennel.name + "  - run #" + event.eventNumber;
+            return kennel.name + "  - Run #" + event.eventNumber;
         }
         return kennel.name;
     }
