@@ -43,10 +43,11 @@ public class HashEventDto {
             if (eventDateTime.getHourOfDay() == 12) {
                 return "Noon";
             }
-            if (eventDateTime.getHourOfDay() < 12) {
-                return eventDateTime.toString(TIME_FORMAT + " a");
-            }
-            return eventDateTime.toString(TIME_FORMAT);
+//            if (eventDateTime.getHourOfDay() < 12) {
+//                return eventDateTime.toString(TIME_FORMAT + " a");
+//            }
+//            return eventDateTime.toString(TIME_FORMAT);
+            return eventDateTime.toString(TIME_FORMAT + " a");
 
         } catch (IllegalArgumentException e) {
             Log.v(TAG, "error parsing date " + date, e);

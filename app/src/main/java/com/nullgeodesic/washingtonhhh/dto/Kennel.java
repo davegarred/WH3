@@ -20,12 +20,16 @@ public class Kennel {
     public static final String TACOMA = "TACOMA";
     public static final String SS_SHITSHOW = "SS_SHITSHOW";
 
+    public static final String HAPPY_HOUR = "HAPPY_HOUR";
+    public static final String RENTON_HAPPY_HOUR = "RENTON_HAPPY_HOUR";
+
     static {
         UNKNOWN.id = "UNKNOWN";
         UNKNOWN.name = "";
     }
 
     private static final Map<String, Integer> KENNEL_LOGOS = new HashMap<>();
+    private static final Map<String, String> SPONSOR_KENNELS = new HashMap<>();
     private static final Map<String, Integer> BADGES = new HashMap<>();
 
     static {
@@ -37,6 +41,12 @@ public class Kennel {
         KENNEL_LOGOS.put(SEAMON, R.drawable.logo_seamon);
         KENNEL_LOGOS.put(TACOMA, R.drawable.logo_tacoma);
         KENNEL_LOGOS.put(SS_SHITSHOW, R.drawable.logo_ssss);
+
+        KENNEL_LOGOS.put(HAPPY_HOUR, R.drawable.logo_seattle);
+        KENNEL_LOGOS.put(RENTON_HAPPY_HOUR, R.drawable.logo_puget);
+
+        SPONSOR_KENNELS.put(HAPPY_HOUR, SEATTLE);
+        SPONSOR_KENNELS.put(RENTON_HAPPY_HOUR, PUGET_SOUND);
 
         BADGES.put("WALKER_FRIENDLY", R.drawable.walker_badge);
         BADGES.put("PAVEMENT_POUNDER", R.drawable.pavement_badge);
@@ -78,4 +88,11 @@ public class Kennel {
         return drawables;
     }
 
+    public String kennelDetailsId() {
+        final String sponsor = SPONSOR_KENNELS.get(id);
+        if(sponsor != null) {
+            return sponsor;
+        }
+        return id;
+    }
 }

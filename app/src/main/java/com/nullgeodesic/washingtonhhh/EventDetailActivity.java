@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nullgeodesic.washingtonhhh.listener.EventMapClickListener;
-import com.nullgeodesic.washingtonhhh.listener.KennelClickListener;
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
+import com.nullgeodesic.washingtonhhh.listener.EventMapClickListener;
+import com.nullgeodesic.washingtonhhh.listener.KennelClickListener;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
 
 import java.util.regex.Pattern;
@@ -33,6 +33,7 @@ public class EventDetailActivity extends AppCompatActivity {
         final TextView eventDescription = (TextView) findViewById(R.id.content_event_detail_description);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         int position = getIntent().getIntExtra(EVENT_EXTRA, 0);
         final HashEventDto hashEvent = ContentHolder.allEvents.get(position);
@@ -49,7 +50,7 @@ public class EventDetailActivity extends AppCompatActivity {
             kennelLogo.setVisibility(View.INVISIBLE);
         } else {
             kennelLogo.setImageResource(kennelDrawableId);
-            kennelLogo.setOnClickListener(new KennelClickListener(this, kennel.id));
+            kennelLogo.setOnClickListener(new KennelClickListener(this, kennel.kennelDetailsId()));
         }
 
         toolbar.setTitle(hashEvent.eventName);
@@ -60,9 +61,6 @@ public class EventDetailActivity extends AppCompatActivity {
 
     private CharSequence formatDescription(HashEventDto hashEvent) {
         String baseDescription = hashEvent.description;
-//                .replace("'", "&apos;")
-//                .replace("‘", "&apos;")
-//                .replace("’", "&apos;")
         final boolean hasHtml = Pattern.compile("<[^>]*>").matcher(baseDescription).find();
         return hasHtml ? Html.fromHtml(baseDescription) : baseDescription;
     }
