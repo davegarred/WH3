@@ -20,7 +20,6 @@ public class InformationalActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_informational_toolbar);
         setSupportActionBar(toolbar);
 
-
         final String title = getIntent().getStringExtra(INFORMATIONAL_TITLE_EXTRA);
         toolBarLayout.setTitle(title);
         final int target = getIntent().getIntExtra(INFORMATIONAL_TARGET_EXTRA, 0);

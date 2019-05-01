@@ -47,8 +47,9 @@ public class CommunicationController {
                     @Override
                     public void onResponse(String response) {
                         final CalendarDto cal = new Gson().fromJson(response, CalendarDto.class);
-                        ContentHolder.setItems(cal.events, cal.kennels);
                         Log.v(TAG, "events first pulled at " + Calendar.getInstance().getTime());
+                        PersistenceService.storeV1(activity, response);
+                        ContentHolder.setItems(cal.events, cal.kennels);
                         final Intent intent = new Intent(activity, MainActivity.class);
                         activity.startActivity(intent);
                     }
@@ -56,8 +57,16 @@ public class CommunicationController {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.v(TAG, "some error: " + error.getMessage());
-                        activity.warnNoNetwork();
+                        Log.v(TAG, "network error: " + error.getMessage());
+                        final String storedEvents = PersistenceService.retrieveV1(activity);
+                        if(storedEvents != null) {
+                            final CalendarDto cal = new Gson().fromJson(storedEvents, CalendarDto.class);
+                            ContentHolder.setItems(cal.events, cal.kennels);
+                        }
+                        final Intent intent = new Intent(activity, MainActivity.class);
+                        intent.putExtra(MainActivity.EXTRA_NO_NETWORK, true);
+                        activity.startActivity(intent);
+
                     }
                 });
     }

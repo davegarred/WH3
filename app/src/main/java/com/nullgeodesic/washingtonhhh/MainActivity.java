@@ -14,16 +14,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.nullgeodesic.washingtonhhh.listener.EventDetailAdapterViewClickListener;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
 import com.nullgeodesic.washingtonhhh.service.CommunicationController;
+import com.nullgeodesic.washingtonhhh.service.ContentHolder;
 import com.nullgeodesic.washingtonhhh.service.EventListAdapter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final String EXTRA_NO_NETWORK = "NO_NETWORK_AVAILABLE";
 
     private ListView listView;
     private EventListAdapter adapter;
@@ -33,7 +37,9 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
+        final boolean networkCallFailed = getIntent().getBooleanExtra(EXTRA_NO_NETWORK, false);
+
+        final Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -60,7 +66,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
+        if(networkCallFailed) {
+            warnNoNetwork();
+        }
     }
 
     public void listUpdated() {
@@ -70,7 +78,14 @@ public class MainActivity extends AppCompatActivity
 
     public void warnNoNetwork() {
         swipeRefreshLayout.setRefreshing(false);
-        Snackbar.make(listView, R.string.no_network_connection, Snackbar.LENGTH_LONG).show();
+        final Snackbar snackbar = Snackbar.make(listView, R.string.no_network_connection, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction("close", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                snackbar.dismiss();
+            }
+        });
+        snackbar.show();
     }
 
     @Override
@@ -81,23 +96,19 @@ public class MainActivity extends AppCompatActivity
         } else {
             final Intent intent = new Intent(this, SplashActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("EXIT", true);
+            intent.putExtra(SplashActivity.EXTRA_EXIT, true);
             startActivity(intent);
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -111,6 +122,11 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if(ContentHolder.kennelMap.isEmpty()) {
+            drawer.closeDrawer(GravityCompat.START);
+            return false;
+        }
         int id = item.getItemId();
         switch (id) {
             case R.id.nav_kennel_puget_sound:
@@ -142,7 +158,6 @@ public class MainActivity extends AppCompatActivity
 //                break;
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
