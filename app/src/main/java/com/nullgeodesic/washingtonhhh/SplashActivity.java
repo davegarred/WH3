@@ -7,6 +7,7 @@ import com.nullgeodesic.washingtonhhh.service.CommunicationController;
 
 public class SplashActivity extends AppCompatActivity {
 
+    private static final String TAG = SplashActivity.class.getSimpleName();
     public static final String EXTRA_EXIT = "EXIT";
 
     @Override

@@ -124,6 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:contentDescription="Next Run"
         android:background="@android:drawable/list_selector_background"
         android:orientation="vertical">
         <TextView
@@ -152,6 +153,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:contentDescription="Email the hare raiser"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </LinearLayout>

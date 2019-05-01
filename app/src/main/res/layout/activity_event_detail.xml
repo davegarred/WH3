@@ -39,8 +39,8 @@
                 android:layout_gravity="right"
                 android:layout_margin="10dp"
                 android:elevation="5dp"
-                android:translationZ="5dp"
                 android:background="@android:drawable/list_selector_background"
+                android:contentDescription="kennel information"
                 app:srcCompat="@drawable/logo_puget" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -55,6 +55,7 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
+        android:contentDescription="map to the start"
         app:srcCompat="@android:drawable/ic_dialog_map"
         />
 
