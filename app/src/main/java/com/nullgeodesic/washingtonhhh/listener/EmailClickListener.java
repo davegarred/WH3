@@ -23,7 +23,7 @@ public class EmailClickListener implements View.OnClickListener {
         final Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_EMAIL, new String[]{kennel.hareraiserEmail});
         email.putExtra(Intent.EXTRA_SUBJECT, kennel.name + " trails");
-        email.putExtra(Intent.EXTRA_TEXT, "Dear " + kennel.hareraiserEmail + "\n\n");
+        email.putExtra(Intent.EXTRA_TEXT, "Dear " + kennel.hareraiserName + ",\n\nI'd like to hare a trail.");
         email.setType("message/rfc822");
         context.startActivity(Intent.createChooser(email, "Contact the hareraiser"));
     }

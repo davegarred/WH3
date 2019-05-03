@@ -2,6 +2,7 @@ package com.nullgeodesic.washingtonhhh;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
@@ -12,10 +13,10 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.nullgeodesic.washingtonhhh.listener.EmailClickListener;
-import com.nullgeodesic.washingtonhhh.listener.EventDetailClickListener;
 import com.nullgeodesic.washingtonhhh.dto.HashEventDto;
 import com.nullgeodesic.washingtonhhh.dto.Kennel;
+import com.nullgeodesic.washingtonhhh.listener.EmailClickListener;
+import com.nullgeodesic.washingtonhhh.listener.EventDetailClickListener;
 import com.nullgeodesic.washingtonhhh.service.ContentHolder;
 
 
@@ -86,6 +87,8 @@ public class KennelActivity extends AppCompatActivity {
             nextRunLayout.setOnClickListener(new EventDetailClickListener(this, nextEventPos));
         }
 
-        emailFab.setOnClickListener(new EmailClickListener(this, kennel));
+        if (kennel.hareraiserEmail != null && kennel.hareraiserEmail.isEmpty()) {
+            emailFab.setOnClickListener(new EmailClickListener(this, kennel));
+        }
     }
 }
