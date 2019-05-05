@@ -2,21 +2,15 @@
 
 Android app for Western Washington Hash House Harriers
 
-Current version: `v0.0.2` (alpha)
+Current version: `v0.1.14`
 
 Repo:
 
 [https://github.com/davegarred/WH3](https://github.com/davegarred/WH3)
 
-TODOs:
+On Play store:
 
-- better HSWTF logo
-- new splash screen
-- *Next run* section on kennel pages
-- an actual web page
-- add local data storage
-- gracefully recovery from network failure
-- wire up Lambda triggers
+[https://play.google.com/store/apps/details?id=com.nullgeodesic.washingtonhhh](https://play.google.com/store/apps/details?id=com.nullgeodesic.washingtonhhh)
 
 
 For more information [contact Dave *FBS* Garred](mailto:fbeavershit@gmail.com).
